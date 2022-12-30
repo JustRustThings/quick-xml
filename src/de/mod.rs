@@ -584,9 +584,7 @@ impl<'de> Deserializer<'de, SliceReader<'de>> {
     /// Create new deserializer that will borrow data from the specified string
     pub fn from_str(s: &'de str) -> Self {
         let mut reader = Reader::from_str(s);
-        reader
-            .expand_empty_elements(true)
-            .check_end_names(true);
+        reader.expand_empty_elements(true).check_end_names(true);
         Self::new(SliceReader { reader })
     }
 }
@@ -601,11 +599,7 @@ where
     /// is known to represent UTF-8, you can decode it first before using [`from_str`].
     pub fn from_reader(reader: R) -> Self {
         let mut reader = Reader::from_reader(reader);
-        reader
-            .expand_empty_elements(true)
-            .check_end_names(true)
-            .trim_text(true);
-
+        reader.expand_empty_elements(true).check_end_names(true);
         Self::new(IoReader {
             reader,
             buf: Vec::new(),
