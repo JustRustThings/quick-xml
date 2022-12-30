@@ -586,8 +586,7 @@ impl<'de> Deserializer<'de, SliceReader<'de>> {
         let mut reader = Reader::from_str(s);
         reader
             .expand_empty_elements(true)
-            .check_end_names(true)
-            .trim_text(true);
+            .check_end_names(true);
         Self::new(SliceReader { reader })
     }
 }
